@@ -1,0 +1,15 @@
+{
+    "name": "bmcc/dog-dishes",
+    "description": "BMCC Dog Dishes E-commerce Platform",
+    "type": "project",
+    "require": {
+        "php": ">=7.4",
+        "ext-mysqli": "*",
+        "phpmailer/phpmailer": "^6.8"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "echo 'Installation complete'"
+        ]
+    }
+}
