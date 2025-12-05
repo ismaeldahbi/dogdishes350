@@ -1,0 +1,9 @@
+.git
+.gitignore
+README.md
+screenshots/
+vendor/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
