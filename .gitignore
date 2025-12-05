@@ -1,0 +1,19 @@
+# Ignore vendor directory (Composer packages)
+vendor/
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore logs
+*.log
+error_log
+
+# Ignore sensitive local config (if you create one)
+config_local.php
