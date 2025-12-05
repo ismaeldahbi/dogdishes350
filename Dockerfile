@@ -1,20 +1,24 @@
-FROM php:8.2-apache
+# Use official PHP with Apache
+FROM php:8.1-apache
+
+# Install MySQL extension
+RUN docker-php-ext-install mysqli pdo pdo_mysql
+
+# Enable Apache mod_rewrite
+RUN a2enmod rewrite
+
+# Copy application files
+COPY . /var/www/html/
 
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy all your project files
-COPY . .
+# Set permissions
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 755 /var/www/html
 
-# Move public folder contents to Apache's root
-RUN rm -rf /var/www/html/html && \
-    cp -r public/* /var/www/html/
-
-# Set index.php as the default file
-RUN echo "<IfModule dir_module>\n    DirectoryIndex index.php index.html\n</IfModule>" > /etc/apache2/mods-enabled/dir.conf
-
-# Fix the ServerName warning
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
-
+# Expose port 80
 EXPOSE 80
+
+# Start Apache
 CMD ["apache2-foreground"]
